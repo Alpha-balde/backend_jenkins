@@ -4,6 +4,7 @@ export class UserAndBasket1659029957134 implements MigrationInterface {
     name = 'UserAndBasket1659029957134'
 
     public async up(queryRunner: QueryRunner): Promise<void> {
+        await queryRunner.query(`CREATE TABLE "user" ("id" SERIAL NOT NULL, "username" character varying NOT NULL, "userpassword" character varying NOT NULL, "userdescription" character varying NOT NULL, "useremail" character varying NOT NULL, CONSTRAINT "UQ_78a916df40e02a9deb1c4b75edb" UNIQUE ("username"), CONSTRAINT "PK_cace4a159ff9f2512dd42373760" PRIMARY KEY ("id"))`);
         await queryRunner.query(`CREATE TABLE "item" ("id" SERIAL NOT NULL, "name" character varying NOT NULL, "price" integer NOT NULL, "quantity" integer NOT NULL DEFAULT '1', "description" character varying NOT NULL, CONSTRAINT "UQ_c6ae12601fed4e2ee5019544ddf" UNIQUE ("name"), CONSTRAINT "PK_d3c0c71f23e7adcf952a1d13423" PRIMARY KEY ("id"))`);
         await queryRunner.query(`CREATE INDEX "idx_item_name" ON "item" ("name") `);
         await queryRunner.query(`CREATE TABLE "basket_item" ("id" SERIAL NOT NULL, "quantity" integer NOT NULL, "basketId" integer, "itemId" integer, CONSTRAINT "PK_6d46510f73c54c1d75329e1110d" PRIMARY KEY ("id"))`);
