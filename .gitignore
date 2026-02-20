@@ -3,3 +3,6 @@ node_modules/*
 *.log
 .idea/*
 *.backup
+node_modules
+.npm
+.npm-cache
